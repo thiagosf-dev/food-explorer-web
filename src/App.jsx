@@ -1,7 +1,9 @@
+import { SignUp } from "./pages/SignUp";
+
 export function App() {
   return (
     <>
-      <h1>food explorer</h1>
+      <SignUp />
     </>
   );
 }
