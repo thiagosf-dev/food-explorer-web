@@ -16,14 +16,11 @@ function AuthProvider({ children }) {
         { withCredentials: true }
       );
 
-      const { user } = response.data;
+      const { data } = response;
 
-      localStorage.setItem(
-        "@foodexplorer:user",
-        JSON.stringify({ email, password })
-      );
+      localStorage.setItem("@foodexplorer:user", JSON.stringify(data));
 
-      setData({ user });
+      setData(data);
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);

@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { PageTitle } from "../../components/PageTitle";
 import { useAuth } from "../../hooks/auth";
 import { Container, Content } from "./styles";
 
 export function SignIn() {
+  const navigate = useNavigate();
+
   const { signIn } = useAuth();
 
   const [password, setPassword] = useState(``);
@@ -16,7 +19,11 @@ export function SignIn() {
     signIn({
       password,
       email,
-    }).then(() => alert(`Usuário logado com sucesso.`));
+    }).then(() => {
+      alert(`Usuário logado com sucesso.`);
+      console.log("second");
+      return navigate(`/`);
+    });
   };
 
   return (
